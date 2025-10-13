@@ -402,11 +402,79 @@ h1{
 .boton-enviar:hover {
     background-color: #4B3832;
 }
-/* --- Estilos para el Footer (Pie de Página) --- */
+
+/* --- Estilos para la Sección Reseñas --- */
+
+.seccion-reseñas {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #f7f3f0; /* Fondo claro de tu hero-inicio */
+    margin-bottom: 40px;
+}
+
+.seccion-reseñas h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    color: #4B3832;
+    margin-bottom: 40px;
+}
+
+.reseñas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: auto auto; 
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.reseña-item {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reseña-principal {
+    grid-column: 1 / span 3;
+    text-align: center;
+    background-color: #ffdad3;
+    padding: 40px;
+    margin-bottom: 10px;
+}
+
+.rating {
+    margin-bottom: 15px;
+}
+
+.rating i {
+    color: #9c5b2c;
+    font-size: 1.2em;
+}
+
+/* Texto y Autor */
+.reseña-texto {
+    font-style: italic;
+    color: #4B3832;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    flex-grow: 1; 
+}
+
+.reseña-autor {
+    font-weight: bold;
+    color: #7B5C4A; 
+    font-size: 0.9em;
+}
 
 footer {
-    background-color: #4B3832; /* Color Oscuro Principal (reutilizado) */
-    color: #fff; /* Texto blanco para contraste */
+    background-color: #4B3832; 
+    color: #fff;
     padding: 40px 20px 10px; 
     font-size: 16px;
 }
@@ -415,27 +483,24 @@ footer {
     display: flex; 
     justify-content: space-around; 
     flex-wrap: wrap; 
-    max-width: 1300px; /* Igual al max-width de tu <main> */
+    max-width: 1300px; 
     margin: 0 auto 30px; 
-    border-bottom: 1px solid #7B5C4A; /* Línea de separación usando color secundario */
+    border-bottom: 1px solid #7B5C4A; 
     padding-bottom: 20px;
 }
 
 .columna-footer {
     width: 30%; 
-    min-width: 200px; /* Reducido para mejor ajuste en tabletas */
+    min-width: 200px;
     margin-bottom: 20px;
 }
-
-/* Títulos de Columna */
 .columna-footer h4 {
-    color: #ffdad3; /* Color claro que ya usas en el header para resaltar */
+    color: #ffdad3;
     margin-bottom: 15px;
     font-size: 1.2em;
-    font-family: 'Playfair Display', serif; /* Usando tu tipografía de títulos */
+    font-family: 'Playfair Display', serif; 
 }
 
-/* Estilos de Párrafos y Enlaces */
 .columna-footer p, .columna-footer a {
     color: #ccc;
     text-decoration: none;
@@ -446,17 +511,15 @@ footer {
 }
 
 .columna-footer a:hover {
-    color: #9c5b2c; /* Color de Contraste (reutilizado) */
+    color: #9c5b2c;
 }
 
-/* Estilos para la Navegación Secundaria (Enlaces Rápidos) */
 .navegacion-secundaria ul {
     list-style: none; 
     padding: 0;
     margin: 0;
 }
 
-/* Estilos de Redes Sociales */
 .iconos-sociales {
     display: flex;
     gap: 15px;
@@ -464,15 +527,14 @@ footer {
 
 .iconos-sociales a {
     font-size: 1.8em; 
-    color: #ffdad3; /* Color de Resalte */
+    color: #ffdad3;
 }
 
 .iconos-sociales a:hover {
-    color: #9c5b2c; /* Color de Contraste */
+    color: #9c5b2c;
 }
 
-/* Estilos de Copyright */
-.footer-copyright {
+\.footer-copyright {
     text-align: center;
     padding: 10px 0;
     font-size: 0.9em;
@@ -527,5 +589,11 @@ footer {
     
     .oferta-producto {
         flex: 1 1 100%; 
+    }
+    .reseñas-grid {
+        grid-template-columns: 1fr;
+    }
+    .reseña-principal {
+        grid-column: auto; 
     }
 }
