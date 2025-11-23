@@ -230,7 +230,9 @@ h1{
     margin-bottom: 15px;
 
 }
-.productos {
+/* --- INICIO DE MODIFICACIÓN CSS PARA PRODUCTOS DINÁMICOS --- */
+
+.grid-productos { /* Nuevo selector para el contenedor #contenedor-productos */
     display: flex;         
     flex-wrap: wrap;       
     justify-content: center; 
@@ -239,7 +241,9 @@ h1{
     width: 100%; 
 }
 
-.productos article {
+/* Aplicar estilos de tarjeta a la clase .card (que usarás en JS) o al elemento article */
+.grid-productos article, 
+.grid-productos .card { 
     flex: 0 0 30%;
     max-width: 30%; 
     min-width: 280px;
@@ -252,9 +256,11 @@ h1{
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    
 }
-.productos article p {
+
+/* Modificado para que apunte al nuevo contenedor */
+.grid-productos article p,
+.grid-productos .card p { 
     flex-grow: 1; 
     font-family: 'Roboto', sans-serif;
     color: #555; 
@@ -263,7 +269,9 @@ h1{
     padding: 0 30px;
 }
 
-.productos article .card-footer span {
+/* Modificado para que apunte al nuevo contenedor */
+.grid-productos article .card-footer span,
+.grid-productos .card .card-footer span {
     display: block; 
     font-size: 1.1em;
     color: #9c5b2c; 
@@ -272,7 +280,9 @@ h1{
 
 }
 
-.productos article .card-footer button {
+/* Modificado para que apunte al nuevo contenedor */
+.grid-productos article .card-footer button,
+.grid-productos .card .card-footer button {
     background-color: #7B5C4A; 
     color: white;
     border: none;
@@ -287,19 +297,26 @@ h1{
     transition: background-color 0.3s, box-shadow 0.3s;
     
 }
-.productos article .card-footer button:hover {
+/* Modificado para que apunte al nuevo contenedor */
+.grid-productos article .card-footer button:hover,
+.grid-productos .card .card-footer button:hover {
     background-color: #4B3832; 
     border-radius: 5px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
-.productos article img {
+/* Modificado para que apunte al nuevo contenedor */
+.grid-productos article img,
+.grid-productos .card img {
     max-width: 100%; 
     height: 200px;   
     object-fit: contain;
     border-radius: 4px; 
     margin-bottom: 10px;
 }
+/* --- FIN DE MODIFICACIÓN CSS PARA PRODUCTOS DINÁMICOS --- */
+
+
 .seccion-contacto {
     max-width: 700px; 
     margin: 40px auto; 
@@ -534,7 +551,7 @@ footer {
     color: #9c5b2c;
 }
 
-\.footer-copyright {
+.footer-copyright {
     text-align: center;
     padding: 10px 0;
     font-size: 0.9em;
@@ -568,18 +585,23 @@ footer {
     main {
         margin-top: 130px; 
     }
-    .productos article {
+    
+    .grid-productos article,
+    .grid-productos .card {
         flex: 1 1 90%; 
         max-width: 90%; 
         min-width: unset; 
     }
-    .productos article .card-footer button {
+    
+    .grid-productos article .card-footer button,
+    .grid-productos .card .card-footer button {
         width: 80%; 
         padding: 8px 10px;
         font-size: 0.95em;
     }
 
-    .productos article p {
+    .grid-productos article p,
+    .grid-productos .card p {
         padding: 0 15px;
     }
     .ofertas-grid-items {
@@ -596,4 +618,35 @@ footer {
     .reseña-principal {
         grid-column: auto; 
     }
+}
+/* Añade esta regla en tu archivo css_3.css */
+
+#btn-mostrar-productos {
+    display: block; 
+    
+    width: 250px; 
+    margin: 30px auto; 
+    
+    text-align: center;
+}
+/* Añade o modifica esta regla en tu archivo css_3.css */
+
+.productos {
+    margin-bottom: 60px; 
+    padding-bottom: 20px; 
+}
+/* Asegura que el ícono esté por encima de todo para ser clickeable */
+#carrito-icon {
+    position: relative;
+    cursor: pointer;
+    z-index: 1001; /* Mayor que el header */
+}
+
+/* Fuerza el modal a tener una posición absoluta o fija para que aparezca */
+#carrito-modal {
+    /* Mantenemos el display:none para que JS lo maneje */
+    position: absolute; 
+    top: 60px; /* Ajústalo para que aparezca debajo del header */
+    right: 20px; /* Ajústalo para que aparezca cerca del ícono */
+    z-index: 999;
 }

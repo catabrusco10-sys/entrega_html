@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJd4bTxE8J+4j154Dfh3zGj7k8a7k6jA8z1Wj9w1qG8k20tA1n0N8l4y3tDzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">    <link rel="stylesheet" href="./css/css_3.css">
+    
+    <title>Contacto - Tienda de Café</title>
     <link rel="stylesheet" href="./css/css_3.css">
     <title>Productos - Tienda de Café</title>
 
@@ -13,13 +15,19 @@
 <body>
     
     <header>
-        <nav>
-            <ul>
-                <li><a href="index3.html">Inicio</a></li>
-                <li><a href="Productos.html">Productos</a></li> 
-                <li><a href="Contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+        <div class="header-contenido">
+            <nav>
+                <ul>
+                    <li><a href="index3.html">Inicio</a></li>
+                    <li><a href="Productos.html">Productos</a></li> 
+                    <li><a href="Contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div id="carrito-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="contador-carrito">0</span>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -28,78 +36,20 @@
         </h1>
         <section class="productos"> 
             
-            <article> 
-            <h2>Etiopía Yirgacheffe Premium</h2>  
-            <img src="./img/cafe_img1.jpg" alt="Bolsa de café en grano Etiopía Yirgacheffe">
-
-            <p>Un café de origen único, notas florales y toques cítricos. Tostado medio. Ideal para la mañana.</p> 
-            
-            <div class="card-footer">
-                <span>$ 18.50 USD</span> 
-                <button type="submit"> Agregar al Carrito</button> 
-            </div>
-            </article> 
-
-            <article> 
-                <h2>Prensa Francesa Clásica 1L</h2>
-                <img src="./img/cafe_img2.jpeg" alt="Prensa francesa de 1 litro de vidrio y metal">
-            
-                <p>El mejor método para una infusión rica y con cuerpo. Filtro de acero inoxidable, capacidad 1 litro.</p> 
-                
-                <div class="card-footer">
-                    <span>$ 35.00 USD</span> 
-                    <button type="submit"> Agregar al Carrito</button> 
+            <div id="contenedor-productos" class="grid-productos">
                 </div>
-            </article> 
-
-            <article> 
-                <h2>Set de Tazas de Cerámica Artesanal</h2>
-                <img src="./img/tazas_img3.jpg" alt="Set de taza de cerámica para espresso">
             
-                <p>Tazas únicas hechas a mano, perfectas para tu espresso matutino. Disponibles en 3 colores.</p> 
-                
-                <div class="card-footer">
-                    <span>$ 12.99 USD</span> 
-                    <button type="submit">Agregar al Carrito</button> 
-                </div>
-            </article>
-
-            <article> 
-                <h2>Etiopía Yirgacheffe Premium</h2>  
-                <img src="./img/img4.png" alt="Bolsa de café">
-
-                <p>Ideal para el producto que tienes en oferta o como tu "Best Seller" de sabor tradicional.</p> 
-                
-                <div class="card-footer">
-                    <span>$ 18.50 USD</span> 
-                    <button type="submit"> Agregar al Carrito</button> 
-                </div>
-            </article> 
-
-            <article> 
-                <h2>Prensa Francesa Clásica 1L</h2>
-                <img src="./img/img5.webp" alt="Bolsa de café">
+            <button id="btn-mostrar-productos" class="boton-principal">Cargar Más Productos (3 restantes)</button>
             
-                <p>Úsalo para un café más exótico y de especialidad, como el que se ve en tus imágenes.</p> 
-                
-                <div class="card-footer">
-                    <span>$ 35.00 USD</span> 
-                    <button type="submit"> Agregar al Carrito</button> 
-                </div>
-            </article> 
-
-            <article> 
-                <h2>Set de Tazas de Cerámica Artesanal</h2>
-                <img src="./img/img6.webp" alt="Bolsa de café">
-            
-                <p>Úsalo para un café de consumo diario o para clientes que prefieren sabores muy intensos.</p> 
-                
-                <div class="card-footer">
-                    <span>$ 12.99 USD</span> 
-                    <button type="submit">Agregar al Carrito</button> 
-                </div>
-            </article>
         </section>
+        
+        <div id="carrito-modal" style="display:none; border: 1px solid #ccc; padding: 20px; margin-top: 20px; max-width: 400px; margin-left: auto; margin-right: auto; background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <h2>🛒 Carrito de Compras</h2>
+            <ul id="lista-carrito">
+                </ul>
+            <h3>Total: <span id="total-carrito">$0.00</span></h3>
+            <button id="vaciar-carrito" class="boton-secundario">Vaciar Carrito</button>
+        </div>
         <section id="reseñas" class="seccion-reseñas">
             <h2>Nuestros Clientes Opinan...</h2>
             
@@ -192,5 +142,6 @@
                 <p>&copy; 2024 Tienda de Café. Todos los derechos reservados.</p>
             </div>
     </footer>
+    <script src="./js/app.js"></script>
 </body>
 </html>
