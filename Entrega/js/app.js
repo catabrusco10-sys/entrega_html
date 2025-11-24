@@ -1,6 +1,6 @@
 /* app.js - Carrito profesional unificado (local + API) */
-
 /* === Productos locales === */
+
 const productosLocales = [
   { id: 'p1', nombre: "Etiopía Yirgacheffe Premium", precio: 18.50, imagen: "./img/cafe_img1.jpg", descripcion: "Un café de origen único" },
   { id: 'p2', nombre: "Prensa Francesa Clásica 1L", precio: 35.00, imagen: "./img/cafe_img2.jpeg", descripcion: "El mejor método para obtener u café." },
@@ -11,7 +11,8 @@ const productosLocales = [
 ];
 
 /* === Estado === */
-let catalogo = []; // aquí guardamos lo local + lo de API
+localStorage.removeItem("carrito");
+let catalogo = [];
 let carrito = JSON.parse(localStorage.getItem('carrito_v1')) || [];
 
 /* === Referencias DOM === */
