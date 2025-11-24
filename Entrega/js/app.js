@@ -100,7 +100,6 @@ function addToCart(productId) {
   }
 
   guardarYRender();
-  openCarrito(); // abrir para feedback
 }
 
 function changeQuantity(productId, delta) {
