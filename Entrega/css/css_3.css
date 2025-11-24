@@ -34,7 +34,7 @@
 .grid-destacados {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 30px;
     margin-bottom: 60px;
 }
 
@@ -190,6 +190,8 @@
 }
 header {
     width: 100%;
+    z-index: 1000; /* o 9999 si querés */
+
     position: fixed; 
     top: 0;
     left: 0;
@@ -233,30 +235,52 @@ h1{
 /* --- INICIO DE MODIFICACIÓN CSS PARA PRODUCTOS DINÁMICOS --- */
 
 .grid-productos { /* Nuevo selector para el contenedor #contenedor-productos */
-    display: flex;         
-    flex-wrap: wrap;       
-    justify-content: center; 
-    gap: 15px;             
-    padding: 10px 0; 
-    width: 100%; 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-column-gap: 40px; 
+    grid-row-gap: 40px;
+
+    width: 100%;
+    padding: 20px 0;
+}
+/* Animación y hover SIN cambiar el tamaño */
+.grid-productos article,
+.grid-productos .card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    will-change: transform;   /* evita “saltos” */
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-productos article:hover,
+.grid-productos .card:hover {
+    transform: translateY(-8px); /* se eleva */
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
 }
 
 /* Aplicar estilos de tarjeta a la clase .card (que usarás en JS) o al elemento article */
-.grid-productos article, 
-.grid-productos .card { 
-    flex: 0 0 30%;
-    max-width: 30%; 
-    min-width: 280px;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between;    
-    border: 1px solid #ccc;
-    padding: 15px;
-    text-align: center;
-    background-color: #fff;
+.grid-productos article,
+.grid-productos .card {
+    background: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
+
+
+.grid-productos article:hover,
+.grid-productos .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
 
 /* Modificado para que apunte al nuevo contenedor */
 .grid-productos article p,
@@ -304,6 +328,10 @@ h1{
     border-radius: 5px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
+.grid-productos .card-footer {
+    margin-top: auto; /* hace que quede abajo sí o sí */
+}
+
 
 /* Modificado para que apunte al nuevo contenedor */
 .grid-productos article img,
@@ -601,8 +629,13 @@ footer {
     }
 
     .grid-productos article p,
-    .grid-productos .card p {
-        padding: 0 15px;
+    .grid-productos .card p { 
+        flex-grow: 1;
+        font-family: 'Roboto', sans-serif;
+        color: #555; 
+        font-size: 0.9em; 
+        line-height: 1.4; 
+        padding: 0 30px;
     }
     .ofertas-grid-items {
         flex-direction: column; 
@@ -635,18 +668,167 @@ footer {
     margin-bottom: 60px; 
     padding-bottom: 20px; 
 }
-/* Asegura que el ícono esté por encima de todo para ser clickeable */
+/* Ícono del carrito */
 #carrito-icon {
-    position: relative;
+    position: fixed;
+    top: 20px;
+    right: 40px;
     cursor: pointer;
-    z-index: 1001; /* Mayor que el header */
+    z-index: 9999;
+    background: white;
+    padding: 14px 16px; /* más grande */
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-/* Fuerza el modal a tener una posición absoluta o fija para que aparezca */
+#carrito-icon i {
+    font-size: 26px; /* más grande */
+    color: #333;
+}
+
+#contador-carrito {
+    position: absolute;
+    top: -5px;
+    right: -px;
+    background: #c0392b;
+    color: white;
+    font-size: 12px;
+    padding: 4px 6px;
+    border-radius: 50%;
+}
+/* --- NUEVO DISEÑO DEL CARRITO (Opción 2) --- */
+
+/* Imagen pequeña en el carrito */
+/* Fila de controles de cantidad en el carrito */
+.qty-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+/* Botones - y + */
+.qty-line button {
+    padding: 4px 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Cantidad centrada */
+.qty-line .qty {
+    min-width: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Eliminar */
+.qty-line .btn-remove {
+    background: #c0392b;
+    color: white;
+    margin-left: auto;
+}
+
+.qty-line .btn-remove:hover {
+    background: #962d22;
+}
+
+.carrito-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+
+
 #carrito-modal {
-    /* Mantenemos el display:none para que JS lo maneje */
-    position: absolute; 
-    top: 60px; /* Ajústalo para que aparezca debajo del header */
-    right: 20px; /* Ajústalo para que aparezca cerca del ícono */
-    z-index: 999;
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    width: 350px;
+    max-height: 70vh;
+    overflow-y: auto;
+
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    padding: 20px;
+
+    box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+
+    z-index: 99999;
+    display: none;
+}
+
+/* Título */
+#carrito-modal h2 {
+    font-family: 'Playfair Display';
+    font-size: 1.6em;
+    color: #4B3832;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Lista */
+#lista-carrito li {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Línea 1: nombre */
+.carrito-nombre {
+    font-weight: bold;
+    color: #4B3832;
+    margin-bottom: 5px;
+}
+
+/* Línea 2: precio + cantidad */
+.carrito-info {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Línea 3: subtotal + eliminar */
+.carrito-footer-linea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carrito-subtotal {
+    font-size: 1em;
+    font-weight: bold;
+    color: #9c5b2c;
+}
+
+.carrito-eliminar {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 6px 9px;
+    font-size: 0.8em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.carrito-eliminar:hover {
+    background: #962d22;
+}
+
+/* Total general */
+#carrito-total {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 2px solid #ddd;
+
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: right;
+    color: #4B3832;
 }

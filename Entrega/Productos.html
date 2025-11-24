@@ -36,20 +36,36 @@
         </h1>
         <section class="productos"> 
             
-            <div id="contenedor-productos" class="grid-productos">
-                </div>
+            <div id="contenedor-productos" class="grid-productos"></div>
+
             
-            <button id="btn-mostrar-productos" class="boton-principal">Cargar Más Productos (3 restantes)</button>
+            <button id="btn-mostrar-productos" class="boton-principal">Cargar Más Productos (2 restantes)</button>
             
         </section>
         
-        <div id="carrito-modal" style="display:none; border: 1px solid #ccc; padding: 20px; margin-top: 20px; max-width: 400px; margin-left: auto; margin-right: auto; background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-            <h2>🛒 Carrito de Compras</h2>
-            <ul id="lista-carrito">
-                </ul>
-            <h3>Total: <span id="total-carrito">$0.00</span></h3>
-            <button id="vaciar-carrito" class="boton-secundario">Vaciar Carrito</button>
+       <!-- CARRO - sidebar -->
+        <div id="carrito-modal" aria-hidden="true">
+        <div class="carrito-header">
+            <h2>🛒 Carrito</h2>
+            <button id="cerrar-carrito">&times;</button>
         </div>
+
+        <ul id="lista-carrito" class="carrito-list"></ul>
+
+        <div class="carrito-footer">
+            <div class="carrito-total">
+            <span>Total</span>
+            <strong id="total-carrito">$0.00</strong>
+            </div>
+            <div class="carrito-acciones">
+            <button id="vaciar-carrito" class="boton-secundario">Vaciar</button>
+            <button id="checkout" class="boton-principal">Pagar</button>
+            </div>
+        </div>
+        </div>
+
+        <div id="carrito-backdrop" style="display:none;"></div>
+
         <section id="reseñas" class="seccion-reseñas">
             <h2>Nuestros Clientes Opinan...</h2>
             
@@ -104,6 +120,7 @@
                 </article>
             </div>
         </section>
+        
     </main>
     
     <footer>
@@ -142,6 +159,7 @@
                 <p>&copy; 2024 Tienda de Café. Todos los derechos reservados.</p>
             </div>
     </footer>
+    
     <script src="./js/app.js"></script>
 </body>
 </html>
